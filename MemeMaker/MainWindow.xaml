@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemeMaker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"> 
+        Title="MainWindow" Height="450" Width="800" x:Name="mainWindow"> 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="upperTextBlock" Grid.Row="0" Grid.Column="0">Texto superior</TextBlock>
+        <TextBox x:Name="upperTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding ElementName=upperTextBlock, Path=Text, Mode=OneTime}" Margin="10,5,10,0"/>
+
+
+        <TextBlock x:Name="lowerTextBlock" Grid.Row="1" Grid.Column="0">Texto inferior</TextBlock>
+        <TextBox x:Name="lowerTextBox"  Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=lowerTextBlock, Path=Text, Mode=OneTime}" Margin="10,5,10,0"/>
+
+
+        <TextBlock x:Name="heightTextBlock" Grid.Row="2" Grid.Column="0">Alto</TextBlock>
+        <Slider x:Name="heightSlider" Margin="10,5,10,0" Maximum="500"  Grid.Row="2" Grid.Column="1" Width="Auto"/>
+
+        <TextBlock x:Name="widthTextBlock" Grid.Row="3" Grid.Column="0">Ancho</TextBlock>
+        <Slider x:Name="widthSlider" Margin="10,5,10,0" Maximum="500"  Grid.Row="3" Grid.Column="1" Width="Auto"/>
+
+        <TextBlock x:Name="uriTextBlock" Grid.Row="4" Grid.Column="0">Ruta</TextBlock>
+        <TextBox x:Name="uriTextBox" Grid.Row="4" Grid.Column="1" Margin="10,5,10,0"/>
+
+        <TextBlock x:Name="borderTextBlock" Grid.Row="5" Grid.Column="0">Borde</TextBlock>
+        <CheckBox x:Name="borderCheckBox" Grid.Row="5" Grid.Column="1" Margin="10,5,10,0"/>
+
+        <Grid Grid.Row="6" Grid.Column="1" Margin="10,5,10,0">
+            <DockPanel Width="{Binding ElementName=widthSlider, Path=Value}"
+               Height="{Binding ElementName=heightSlider, Path=Value}" HorizontalAlignment="Left">
+                <DockPanel.Background>
+                    <ImageBrush ImageSource="{Binding ElementName=uriTextBox, Path=Text}" />
+                </DockPanel.Background>
+                <TextBlock DockPanel.Dock="Top" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Text="{Binding ElementName=upperTextBox, Path=Text}"/>
+                <TextBlock DockPanel.Dock="Bottom" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Text="{Binding ElementName=lowerTextBox, Path=Text}"/>
+            </DockPanel>
+
+        </Grid>
+        <!--<Image x:Name="uriImage" Grid.Row="6" Grid.Column="1" Margin="10,5,10,0" 
+               Source="{Binding ElementName=uriTextBox, Path=Text}"
+               Width="{Binding ElementName=widthSlider, Path=Value}"
+               Height="{Binding ElementName=heightSlider, Path=Value}"/>-->
     </Grid>
 </Window>
