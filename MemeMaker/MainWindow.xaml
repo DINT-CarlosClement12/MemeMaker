@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemeMaker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" x:Name="mainWindow">
+        Title="MainWindow" Height="800" Width="800" x:Name="mainWindow">
 
     <Window.Resources>
         <local:BooleanToInt x:Key="BooleanToInt" />
@@ -35,10 +35,10 @@
 
 
         <TextBlock x:Name="heightTextBlock" Grid.Row="2" Grid.Column="0">Alto</TextBlock>
-        <Slider x:Name="heightSlider" Margin="10,5,10,0" Maximum="500"  Grid.Row="2" Grid.Column="1" Width="Auto" Value="250"/>
+        <Slider x:Name="heightSlider" Grid.Row="2" Grid.Column="1"/>
 
         <TextBlock x:Name="widthTextBlock" Grid.Row="3" Grid.Column="0">Ancho</TextBlock>
-        <Slider x:Name="widthSlider" Margin="10,5,10,0" Maximum="500"  Grid.Row="3" Grid.Column="1" Width="Auto" Value="250"/>
+        <Slider x:Name="widthSlider" Grid.Row="3" Grid.Column="1"/>
 
         <TextBlock x:Name="uriTextBlock" Grid.Row="4" Grid.Column="0">Ruta</TextBlock>
         <TextBox x:Name="uriTextBox" Grid.Row="4" Grid.Column="1" Margin="10,5,10,0"/>
@@ -53,12 +53,12 @@
                     <DockPanel.Background>
                         <ImageBrush ImageSource="{Binding ElementName=uriTextBox, Path=Text}" />
                     </DockPanel.Background>
-                    <TextBlock FontFamily="Impact" FontSize="35" DockPanel.Dock="Top" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Text="{Binding ElementName=upperTextBox, Path=Text}">
+                    <TextBlock DockPanel.Dock="Top" VerticalAlignment="Top" Margin="5" Text="{Binding ElementName=upperTextBox, Path=Text}" Style="{StaticResource memeText}">
                         <TextBlock.BitmapEffect>
                             <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="10" Opacity=".9" Softness="5" />
                         </TextBlock.BitmapEffect>
                     </TextBlock>
-                    <TextBlock DockPanel.Dock="Bottom" FontFamily="Impact" FontSize="35" Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Text="{Binding ElementName=lowerTextBox, Path=Text}">
+                    <TextBlock DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Margin="5" Text="{Binding ElementName=lowerTextBox, Path=Text}" Style="{StaticResource memeText}">
                         <TextBlock.BitmapEffect>
                             <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="10" Opacity=".9" Softness="5" />
                         </TextBlock.BitmapEffect>
