@@ -15,14 +15,27 @@ using System.Windows.Shapes;
 
 namespace MemeMaker
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
+   
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+    }
+
+    public class BooleanToInt : IValueConverter
+    {
+        private const int DEFAULT_BORDER_THICKNESS = 1;
+
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (bool)value ? DEFAULT_BORDER_THICKNESS : 0;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (bool)value ? 0 : DEFAULT_BORDER_THICKNESS;
         }
     }
 }
